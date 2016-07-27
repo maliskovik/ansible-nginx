@@ -1,0 +1,35 @@
+---
+- name: Reload nginx service
+  service:
+    name: nginx
+    state: reloaded
+    enabled: yes
+
+- name: Restart nginx service
+  service:
+    name: nginx
+    state: restarted
+    enabled: yes
+
+- name: Start nginx
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: Reload nginx
+  command: nginx -t
+  notify: Reload nginx service
+
+- name: Restart nginx
+  command: nginx -t
+  notify: Restart nginx service
+
+- name: Restart php-fpm
+  command: service php5-fpm restart
+
+- name: Start php-fpm
+  service:
+      name: php5-fpm
+      state: started
+      enabled: yes

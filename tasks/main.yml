@@ -1,0 +1,11 @@
+---
+# Nginx role main task file
+
+# Role ansible dependencies
+- name: Install python-apt
+  apt:
+    name: python-apt
+    state: present
+    force: yes
+
+- include: nginx.yml

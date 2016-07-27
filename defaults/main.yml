@@ -1,0 +1,6 @@
+---
+# Default nginx variables.
+
+nginx_allowed_ip: ""
+nginx_repo: "ppa:nginx/stable"
+main_nginx_config: "nginx.conf"
