@@ -8,4 +8,5 @@
     state: present
     force: yes
 
-- include: nginx.yml
+- include: install_nginx.yml
+- include: configure_nginx.yml

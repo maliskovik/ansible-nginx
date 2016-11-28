@@ -1,4 +1,5 @@
 ---
+# Nginx setup script
 - name: Nginx main config
   template:
     src: "{{ main_nginx_config }}"

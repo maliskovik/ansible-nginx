@@ -1,0 +1,17 @@
+---
+# Install nginx
+- name: Add nginx repo
+  apt_repository:
+    repo: "{{ nginx_repo }}"
+    state: present
+    mode: 0644
+
+- name: Install nginx
+  apt:
+    name: "{{ item }}"
+    state: latest
+    force: yes
+  with_items:
+    - "{{ nginx_package }}"
+    - memcached
+  notify: Start nginx
