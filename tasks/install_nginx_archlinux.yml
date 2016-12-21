@@ -1,0 +1,6 @@
+---
+- name: Install nginx
+  pacman:
+    name: nginx
+    state: latest
+  notify: Start nginx

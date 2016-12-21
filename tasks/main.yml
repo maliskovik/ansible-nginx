@@ -1,12 +1,8 @@
 ---
 # Nginx role main task file
+- include: install_nginx_ubuntu.yml
+  when: ansible_os_family == "Debian"
+- include: install_nginx_archlinux.yml
+  when: ansible_os_family == "Archlinux"
 
-# Role ansible dependencies
-- name: Install python-apt
-  apt:
-    name: python-apt
-    state: present
-    force: yes
-
-- include: install_nginx.yml
 - include: configure_nginx.yml

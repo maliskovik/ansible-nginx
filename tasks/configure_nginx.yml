@@ -24,7 +24,6 @@
     path: /etc/nginx/sites-enabled/default
     state: absent
 
-
 - name: Nginx main includes
   copy:
     src: conf.d/
@@ -34,7 +33,7 @@
     mode: 0644
   notify: Reload nginx
 
-- name: Nginx include configs
+- name: Nginx custom include configs
   template:
     src: "{{ item }}"
     dest: /etc/nginx/conf.d
@@ -45,7 +44,7 @@
   with_fileglob:
     - "{{ nginx_config_files }}/*.inc"
 
-- name: Nginx main enabled sites
+- name: Nginx CI main enabled sites
   template:
     src: "{{ item }}"
     dest: /etc/nginx/sites-enabled
@@ -58,7 +57,7 @@
   with_fileglob:
     - "{{ nginx_config_files }}/*main.conf"
 
-- name: Nginx upstream enabled sites
+- name: Nginx CI upstream enabled sites
   template:
     src: "{{ item }}"
     dest: "/etc/nginx/sites-enabled/"
