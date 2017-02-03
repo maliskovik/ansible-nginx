@@ -1,8 +1,7 @@
 ---
-# Nginx setup script
 - name: Nginx main config
   template:
-    src: "{{ main_nginx_config }}"
+    src: "{{ nginx_main_config }}"
     dest: /etc/nginx/nginx.conf
     owner: root
     group: root

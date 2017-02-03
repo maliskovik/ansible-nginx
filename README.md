@@ -12,7 +12,7 @@ You should store all nignx config files for a host in a directory. This role use
 
 ## Mandatory variables
 * nginx_config_files - where you store nginx files for the host locally
-* main_nginx_config - nginx.conf to use
+* nginx_main_config - nginx.conf to use
 
 ## Optional variables
 
