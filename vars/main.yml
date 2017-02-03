@@ -1,0 +1,9 @@
+---
+
+nginx_repo: "ppa:nginx/stable"
+main_nginx_config: "nginx.conf"
+nginx_packages_base:
+  - "{{ nginx_package }}"
+  - memcached
+
+nginx_packages: "{{ nginx_packages_base + nginx_packages_optional }}"

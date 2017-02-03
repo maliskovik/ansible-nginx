@@ -10,10 +10,13 @@ You should store all nignx config files for a host in a directory. This role use
 * - include.conf - this files are copied to nginx/conf.d directory where they are include into the main nginx.conf file by default.
 
 
+## Mandatory variables
+* nginx_config_files - where you store nginx files for the host locally
+* main_nginx_config - nginx.conf to use
+
 ## Optional variables
 
-* nginx_config_files - where you store nginx files for the host locally
 * nginx_allowed_ip - which IP to permit when setting basic auth
-* nginx_repo - nginx official repository - change only if necessary
-* main_nginx_config - nginx.conf to use
 * nginx_includes - custom include files for nginx config
+* nginx_packages_optional - packages to install together with nginx
+* nginx_package - which nginx package to install (nginx/nginx-core/nginx-extras)

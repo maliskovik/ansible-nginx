@@ -17,7 +17,5 @@
     name: "{{ item }}"
     state: latest
     force: yes
-  with_items:
-    - "{{ nginx_package }}"
-    - memcached
+  with_items: "{{ nginx_packages }}"
   notify: Start nginx
