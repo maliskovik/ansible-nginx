@@ -76,6 +76,7 @@
     group: root
     mode: 0644
     force: yes
+    backup: yes
   notify: Reload nginx
   with_fileglob:
       - "{{ nginx_config_files }}/*static.conf"
