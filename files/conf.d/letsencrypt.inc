@@ -1,5 +1,5 @@
 location ~ /.well-known {
-    allow     all;
-    root     /opt/letsencrypt/challenge;
-    try_files $uri $uri/ =404;
+    auth_basic  off;
+    root        /opt/letsencrypt/challenge;
+    try_files   $uri $uri/ =404;
 }
