@@ -6,3 +6,4 @@ nginx_package: "nginx"
 nginx_packages_optional: []
 nginx_main_config: "nginx.conf"
 nginx_worker_count: 4
+nginx_config_files: "{{ config_directory }}/nginx"
