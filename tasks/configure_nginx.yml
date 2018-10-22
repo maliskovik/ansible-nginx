@@ -104,3 +104,8 @@
     port: 443
     proto: tcp
     rule: allow
+
+- name: Enable nginx service
+  service:
+    name: nginx
+    enabled: yes
