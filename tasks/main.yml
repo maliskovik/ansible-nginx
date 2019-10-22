@@ -4,5 +4,6 @@
   when: ansible_os_family == "Debian"
 - include: install_nginx_archlinux.yml
   when: ansible_os_family == "Archlinux"
-
+- include: install_nginx_centos.yml
+  when: ansible_os_family == "RedHat"
 - include: configure_nginx.yml

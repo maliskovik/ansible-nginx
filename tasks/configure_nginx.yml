@@ -1,4 +1,12 @@
 ---
+- name: Make sites-enabled directory
+  file:
+    path: /etc/nginx
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
 - name: Nginx main config
   template:
     src: "{{ nginx_main_config }}"
@@ -12,11 +20,17 @@
   file:
     path: /etc/nginx/sites-enabled
     state: directory
+    owner: root
+    group: root
+    mode: 0755
 
 - name: Make conf.d directory
   file:
     path: /etc/nginx/conf.d
     state: directory
+    owner: root
+    group: root
+    mode: 0755
 
 - name: Delete default site
   file:
