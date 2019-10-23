@@ -10,6 +10,6 @@ nginx_ubuntu_packages: "{{ nginx_ubuntu_packages_base + nginx_ubuntu_packages_op
 nginx_centos_repo:
   - nginx
 
-nginx_user_ubunut: www-user
+nginx_user_ubunut: www-data
 nginx_user_archlinux: http
-nginx_user_centos: nginx 
+nginx_user_centos: nginx
