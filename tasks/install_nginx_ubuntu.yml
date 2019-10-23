@@ -8,13 +8,13 @@
 
 - name: Add nginx repo
   apt_repository:
-    repo: "{{ nginx_repo }}"
+    repo: "{{ nginx_ubuntu_repo }}"
     state: present
     mode: 0644
 
 - name: Install nginx
   apt:
-    name: "{{ nginx_packages }}"
+    name: "{{ nginx_ubuntu_packages }}"
     state: latest
     force: yes
   notify: Start nginx

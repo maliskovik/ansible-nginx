@@ -1,9 +1,15 @@
 ---
-
-nginx_repo: "ppa:nginx/stable"
-nginx_packages_base:
+nginx_ubuntu_repo: "ppa:nginx/stable"
+nginx_ubuntu_packages_base:
   - "{{ nginx_package }}"
   - memcached
   - apache2-utils
 
-nginx_packages: "{{ nginx_packages_base + nginx_packages_optional }}"
+nginx_ubuntu_packages: "{{ nginx_ubuntu_packages_base + nginx_ubuntu_packages_optional }}"
+
+nginx_centos_repo:
+  - nginx
+
+nginx_user_ubunut: www-user
+nginx_user_archlinux: http
+nginx_user_centos: nginx 

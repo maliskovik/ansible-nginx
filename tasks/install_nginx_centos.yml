@@ -1,0 +1,6 @@
+---
+- name: Install nginx
+  yum:
+    name: "{{ nginx_centos_repo }}"
+    state: present
+  notify: Start nginx

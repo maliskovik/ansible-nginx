@@ -18,5 +18,5 @@ You should store all nignx config files for a host in a directory. This role use
 
 * nginx_allowed_ip - which IP to permit when setting basic auth
 * nginx_includes - custom include files for nginx config
-* nginx_packages_optional - packages to install together with nginx
+* nginx_ubuntu_packages_optional - packages to install together with nginx
 * nginx_package - which nginx package to install (nginx/nginx-core/nginx-extras)
