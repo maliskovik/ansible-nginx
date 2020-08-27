@@ -4,6 +4,7 @@ nginx_ubuntu_packages_base:
   - "{{ nginx_package }}"
   - memcached
   - apache2-utils
+  - python-passlib
 
 nginx_ubuntu_packages: "{{ nginx_ubuntu_packages_base + nginx_ubuntu_packages_optional }}"
 
