@@ -55,7 +55,18 @@
     mode: 0644
   notify: Reload nginx
   with_fileglob:
-    - "{{ nginx_config_files }}/*.inc"
+    - "{{ nginx_includes }}/*.inc"
+
+- name: Nginx main sub-config overrides
+  template:
+    src: "{{ item }}"
+    dest: /etc/nginx/conf.d
+    owner: root
+    group: root
+    mode: 0644
+  notify: Reload nginx
+  with_fileglob:
+    - "{{ nginx_includes }}/*.conf"
 
 - name: Nginx CI main enabled sites
   template:
