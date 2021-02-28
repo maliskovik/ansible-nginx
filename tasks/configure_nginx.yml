@@ -123,3 +123,7 @@
   service:
     name: nginx
     enabled: yes
+  when:
+    - ansible_os_family == "Debian"
+    - ansible_lsb.id == "Ubuntu"
+    - ansible_lsb.major_release|int <= 14
