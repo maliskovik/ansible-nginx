@@ -56,6 +56,7 @@
   notify: Reload nginx
   with_fileglob:
     - "{{ nginx_includes }}/*.inc"
+  when: nginx_includes is defined
 
 - name: Nginx main sub-config overrides
   template:
@@ -67,6 +68,7 @@
   notify: Reload nginx
   with_fileglob:
     - "{{ nginx_includes }}/*.conf"
+  when: nginx_includes is defined
 
 - name: Nginx CI main enabled sites
   template:
