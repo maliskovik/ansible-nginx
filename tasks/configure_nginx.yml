@@ -55,8 +55,8 @@
     mode: 0644
   notify: Reload nginx
   with_fileglob:
-    - "{{ nginx_includes }}/*.inc"
-  when: nginx_includes is defined
+    - "{{ nginx_includes_dir }}/*.inc"
+  when: nginx_includes_dir is defined
 
 - name: Nginx main sub-config overrides
   template:
@@ -67,8 +67,8 @@
     mode: 0644
   notify: Reload nginx
   with_fileglob:
-    - "{{ nginx_includes }}/*.conf"
-  when: nginx_includes is defined
+    - "{{ nginx_includes_dir }}/*.conf"
+  when: nginx_includes_dir is defined
 
 - name: Nginx CI main enabled sites
   template:
@@ -139,4 +139,4 @@
   when:
     - ansible_os_family == "Debian"
     - ansible_lsb.id == "Ubuntu"
-    - ansible_lsb.major_release|int <= 14
+    - ansible_lsb.major_release|int > 14
