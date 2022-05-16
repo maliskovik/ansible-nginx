@@ -120,23 +120,83 @@
   with_fileglob:
       - "{{ nginx_config_files }}/*include.conf"
 
-- name: Allow HTTP
-  ufw:
-    port: 80
-    proto: tcp
-    rule: allow
-
-- name: Allow HTTPS
-  ufw:
-    port: 443
-    proto: tcp
-    rule: allow
-
 - name: Enable nginx service
   service:
     name: nginx
     enabled: yes
+
+- name: Allow HTTP directly
+  ufw:
+    port: "{{ nginx_http_port }}"
+    proto: tcp
+    from_ip: any
+    rule: allow
   when:
-    - ansible_os_family == "Debian"
-    - ansible_lsb.id == "Ubuntu"
-    - ansible_lsb.major_release|int > 14
+    - nginx_http_open
+    - not nginx_http_proxy
+
+- name: Allow HTTPS directly
+  ufw:
+    port: "{{ nginx_https_port }}"
+    proto: tcp
+    from_ip: any
+    rule: allow
+  when:
+    - nginx_https_open
+    - not nginx_https_proxy
+
+- name: Disallow HTTP directly
+  ufw:
+    port: "{{ nginx_http_port }}"
+    proto: tcp
+    from_ip: any
+    rule: allow
+    delete: yes
+  when: (not nginx_http_open) or nginx_http_proxy
+
+- name: Disallow HTTPS directly
+  ufw:
+    port: "{{ nginx_https_port }}"
+    proto: tcp
+    from_ip: any
+    rule: allow
+    delete: yes
+  when: (not nginx_https_open) or nginx_https_proxy
+
+- name: Allow HTTP from proxy
+  ufw:
+    port: "{{ nginx_http_port }}"
+    proto: tcp
+    from_ip: "{{ nginx_http_proxy_ip }}"
+    rule: allow
+  when:
+    - nginx_http_open
+    - nginx_http_proxy
+
+- name: Allow HTTPS from proxy
+  ufw:
+    port: "{{ nginx_https_port }}"
+    proto: tcp
+    from_ip: "{{ nginx_https_proxy_ip }}"
+    rule: allow
+  when:
+    - nginx_https_open
+    - nginx_https_proxy
+
+- name: Disallow HTTP from proxy
+  ufw:
+    port: "{{ nginx_http_port }}"
+    proto: tcp
+    from_ip: "{{ nginx_http_proxy_ip }}"
+    rule: allow
+    delete: yes
+  when: not nginx_http_proxy
+
+- name: Disallow HTTPS from proxy
+  ufw:
+    port: "{{ nginx_https_port }}"
+    proto: tcp
+    from_ip: "{{ nginx_https_proxy_ip }}"
+    rule: allow
+    delete: yes
+  when: not nginx_https_proxy

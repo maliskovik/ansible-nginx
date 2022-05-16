@@ -20,3 +20,11 @@ You should store all nignx config files for a host in a directory. This role use
 * nginx_includes - custom include files for nginx config
 * nginx_ubuntu_packages_optional - packages to install together with nginx
 * nginx_package - which nginx package to install (nginx/nginx-core/nginx-extras)
+* nginx_http_port: HTTP port - defaults to 80
+* nginx_https_port: HTTPS port - defaults to 443
+* nginx_http_open: Should HTTP port be open on firewall
+* nginx_https_open: Should HTTPS port be open on firewall
+* nginx_http_proxy: Is HTTP port behind proxy
+* nginx_https_proxy: Is HTTPS port behind proxy
+* nginx_http_proxy_ip: HTTP proxy IP
+* nginx_https_proxy_ip: HTTP proxy IP

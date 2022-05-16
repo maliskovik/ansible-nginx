@@ -8,3 +8,9 @@ nginx_main_config: "nginx.conf"
 nginx_worker_count: 4
 nginx_config_files: "{{ config_directory }}/nginx"
 nginx_max_files: 1024
+nginx_http_port: 80
+nginx_https_port: 443
+nginx_http_open: True
+nginx_https_open: True
+nginx_http_proxy: False
+nginx_https_proxy: False
