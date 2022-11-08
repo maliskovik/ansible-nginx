@@ -2,7 +2,7 @@
 
 - name: Install python-apt
   apt:
-    name: python-apt
+    name: python3-apt
     state: present
     force: yes
 
