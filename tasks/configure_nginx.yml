@@ -190,7 +190,9 @@
     from_ip: "{{ nginx_http_proxy_ip | default(omit) }}"
     rule: allow
     delete: yes
-  when: not nginx_http_proxy
+  when:
+    - not nginx_http_proxy
+    - nginx_http_proxy_ip is defined
 
 - name: Disallow HTTPS from proxy
   ufw:
@@ -199,4 +201,6 @@
     from_ip: "{{ nginx_https_proxy_ip | default(omit) }}"
     rule: allow
     delete: yes
-  when: not nginx_https_proxy
+  when:
+    - not nginx_https_proxy
+    - nginx_https_proxy_ip is defined
