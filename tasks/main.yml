@@ -1,9 +1,9 @@
 ---
 # Nginx role main task file
-- include: install_nginx_ubuntu.yml
+- ansible.builtin.include_tasks: install_nginx_ubuntu.yml
   when: ansible_os_family == "Debian"
-- include: install_nginx_archlinux.yml
+- ansible.builtin.include_tasks: install_nginx_archlinux.yml
   when: ansible_os_family == "Archlinux"
-- include: install_nginx_centos.yml
+- ansible.builtin.include_tasks: install_nginx_centos.yml
   when: ansible_os_family == "RedHat"
-- include: configure_nginx.yml
+- ansible.builtin.include_tasks: configure_nginx.yml
