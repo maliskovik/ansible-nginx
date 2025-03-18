@@ -4,6 +4,6 @@
   when: ansible_os_family == "Debian"
 - ansible.builtin.include_tasks: install_nginx_archlinux.yml
   when: ansible_os_family == "Archlinux"
-# - ansible.builtin.include_tasks: install_nginx_centos.yml
-#   when: ansible_os_family == "RedHat"
+- ansible.builtin.include_tasks: install_nginx_centos.yml
+  when: ansible_os_family == "RedHat"
 - ansible.builtin.include_tasks: configure_nginx.yml
