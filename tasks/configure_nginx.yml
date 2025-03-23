@@ -93,7 +93,7 @@
     force: no
   notify: Reload nginx
   with_fileglob:
-      - "{{ nginx_config_files }}/*upstream.conf"
+    - "{{ nginx_config_files }}/*upstream.conf"
 
 - name: Nginx static enabled sites
   template:
@@ -106,7 +106,7 @@
     backup: yes
   notify: Reload nginx
   with_fileglob:
-      - "{{ nginx_config_files }}/*static.conf"
+    - "{{ nginx_config_files }}/*static.conf"
 
 - name: Nginx custom includes
   template:
@@ -118,7 +118,7 @@
     force: yes
   notify: Reload nginx
   with_fileglob:
-      - "{{ nginx_config_files }}/*include.conf"
+    - "{{ nginx_config_files }}/*include.conf"
 
 - name: Enable nginx service
   service:
@@ -204,3 +204,9 @@
   when:
     - not nginx_https_proxy
     - nginx_https_proxy_ip is defined
+
+- name: Start nginx
+  service:
+    name: nginx
+    state: started
+    enabled: yes
