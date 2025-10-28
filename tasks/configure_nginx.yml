@@ -187,7 +187,7 @@
   ufw:
     port: "{{ nginx_http_port }}"
     proto: tcp
-    from_ip: "{{ nginx_http_proxy_ip | default(omit) }}"
+    from_ip: "{{ nginx_http_proxy_ip | default('') }}"
     rule: allow
     delete: yes
   when:
@@ -198,7 +198,7 @@
   ufw:
     port: "{{ nginx_https_port }}"
     proto: tcp
-    from_ip: "{{ nginx_https_proxy_ip | default(omit) }}"
+    from_ip: "{{ nginx_https_proxy_ip | default('') }}"
     rule: allow
     delete: yes
   when:
