@@ -4,3 +4,7 @@
     name: "{{ nginx_centos_repo }}"
     state: present
   notify: Start nginx
+
+- name: Set nginx user
+  set_fact:
+    nginx_user: "{{ nginx_user_centos }}"

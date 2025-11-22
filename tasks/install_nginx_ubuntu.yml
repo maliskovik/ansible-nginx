@@ -1,5 +1,4 @@
 ---
-
 - name: Install python-apt
   apt:
     name: python3-apt
@@ -20,3 +19,7 @@
     state: latest
     force: yes
   notify: Start nginx
+
+- name: Set nginx user
+  set_fact:
+    nginx_user: "{{ nginx_user_ubunut }}"
